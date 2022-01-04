@@ -1,0 +1,85 @@
+version: '3'
+services:
+  mysql:
+    image: joshuad23/aline-db:1.0
+    ports:
+    - "3309:3306"
+    env_file:
+      - sql.env
+  gateway:
+    image: joshuad23/aline-gateway:1.0
+    ports:
+      - 8080:80
+    env_file:
+      - gateway.env
+    depends_on:
+      - transactions-microservice
+      - user-microservice
+      - underwriter-microservice
+      - bank-microservice
+  admin-service:
+    image: joshuad23/aline-admin-server:1.2
+    ports:
+      - 3007:80
+    env_file:
+      - admin.env
+    depends_on:
+      - gateway
+  member-service:
+    image: joshuad23/aline-member-server
+    ports:
+      - "4200:80"
+    depends_on:
+      - gateway
+  landing-service:
+    image: joshuad23/aline-landing-server:2.0
+    ports:
+      - "3000:80"
+    env_file:
+      - landing.env
+    depends_on:
+      - gateway
+  user-microservice:
+    image: joshuad23/aline-user-micro:2.0
+    ports:
+      - "8070:80"
+    env_file:
+      - microservice.env
+    depends_on:
+      - bank-microservice
+      - mysql
+  bank-microservice:
+    image: joshuad23/aline-bank-micro:2.0
+    ports:
+      - "8083:80"
+    env_file:
+      - microservice.env
+    depends_on:
+      - mysql
+  underwriter-microservice:
+    image: joshuad23/aline-underwriter-micro:4.0
+    ports:
+      - "8071:80"
+    env_file:
+      - microservice.env
+    depends_on:
+      - bank-microservice
+      - mysql
+  transactions-microservice:
+    image: joshuad23/aline-transaction-micro:1.0
+    ports:
+      - "8073:80"
+    env_file:
+      - microservice.env
+    depends_on:
+      - underwriter-microservice
+      - mysql
+  account-microservice:
+    image: joshuad23/aline-account-service
+    ports:
+      - "8072:80"
+    env_file:
+      - microservice.env
+    depends_on:
+      - underwriter-microservice
+      - mysql

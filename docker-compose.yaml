@@ -1,7 +1,7 @@
 version: '3'
 services:
   mysql:
-    image: joshuad23/aline-db:1.0
+    image: joshuad23/aline-db:2.0
     ports:
     - "3309:3306"
     env_file:
@@ -40,7 +40,7 @@ services:
     depends_on:
       - gateway
   user-microservice:
-    image: joshuad23/aline-user-micro:2.0
+    image: joshuad23/aline-user-micro
     ports:
       - "8070:80"
     env_file:
@@ -49,7 +49,7 @@ services:
       - bank-microservice
       - mysql
   bank-microservice:
-    image: joshuad23/aline-bank-micro:2.0
+    image: joshuad23/aline-bank-micro
     ports:
       - "8083:80"
     env_file:
@@ -57,7 +57,7 @@ services:
     depends_on:
       - mysql
   underwriter-microservice:
-    image: joshuad23/aline-underwriter-micro:4.0
+    image: joshuad23/aline-underwriter-micro
     ports:
       - "8071:80"
     env_file:
@@ -66,7 +66,7 @@ services:
       - bank-microservice
       - mysql
   transactions-microservice:
-    image: joshuad23/aline-transaction-micro:1.0
+    image: joshuad23/aline-transaction-micro
     ports:
       - "8073:80"
     env_file:

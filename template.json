@@ -84,22 +84,6 @@
          "Type": "String"
       }
    },
-   "Metadata": {
-      "SNC::Parameter::Metadata": {
-         "SubnetPool": {
-            "datasource": "ServiceNow::Pools::SubnetPool.getObjectsByNetwork",
-            "datasourceFilter": {
-               "Network": "Network"
-            }
-         },
-         "Network": {
-            "datasource": "ServiceNow::Pools::NetworkPool.getObjectsByLDC"
-         },
-         "KeyName": {
-            "datasource": "ServiceNow::Pools::CloudKeyPairPool.getObjectsByLDC"
-         }
-      }
-   },
    "Mappings": {
       "AWSInstanceType2Arch": {
          "t1.micro": {
@@ -339,9 +323,6 @@
             },
             "KeyName": {
                "Ref": "KeyName"
-            },
-            "SubnetId": {
-               "Ref": "SubnetPool"
             },
             "ImageId": {
                "Fn::FindInMap": [

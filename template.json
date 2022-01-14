@@ -340,6 +340,19 @@
                      ]
                   }
                ]
+            },
+            "UserData": {
+               "Fn::Base64": {
+                  "Fn::Join": [
+                     "",
+                     [
+                        "#!/bin/bash -xe\n",
+                        "sudo yum update -y",
+                        "sudo yum install -y docker",
+                        "sudo docker run -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d joshuad23/aline-db"
+                     ]
+                  ]
+               }
             }
          }
       },

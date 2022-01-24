@@ -37,6 +37,16 @@ spec:
                 secretKeyRef:
                   name: mysql-secret
                   key: MYSQL_PASSWORD
+            - name: ENCRYPT_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: microservice-secret
+                  key: ENCRYPT_SECRET_KEY
+            - name: JWT_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: microservice-secret
+                  key: JWT_SECRET_KEY
             - name: APP_PORT
               valueFrom:
                 configMapKeyRef:
@@ -57,16 +67,6 @@ spec:
                 configMapKeyRef:
                   name: microservice-config
                   key: DB_NAME
-            - name: ENCRYPT_SECRET_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: microservice-secret
-                  key: ENCRYPT_SECRET_KEY
-            - name: JWT_SECRET_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: microservice-secret
-                  key: JWT_SECRET_KEY
 ---
 apiVersion: v1
 kind: Service

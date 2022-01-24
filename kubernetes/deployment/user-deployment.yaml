@@ -26,47 +26,13 @@ spec:
               cpu: 2
           ports:
             - containerPort: 80
-          env:
-            - name: DB_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: mysql-secret
-                  key: MYSQL_USER
-            - name: DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: mysql-secret
-                  key: MYSQL_PASSWORD
-            - name: ENCRYPT_SECRET_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: microservice-secret
-                  key: ENCRYPT_SECRET_KEY
-            - name: JWT_SECRET_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: microservice-secret
-                  key: JWT_SECRET_KEY
-            - name: APP_PORT
-              valueFrom:
-                configMapKeyRef:
-                  name: microservice-config
-                  key: APP_PORT
-            - name: DB_HOST
-              valueFrom:
-                configMapKeyRef:
-                  name: microservice-config
-                  key: DB_HOST
-            - name: DB_PORT
-              valueFrom:
-                configMapKeyRef:
-                  name: microservice-config
-                  key: DB_PORT
-            - name: DB_NAME
-              valueFrom:
-                configMapKeyRef:
-                  name: microservice-config
-                  key: DB_NAME
+          envFrom:
+            - configMapRef:
+                name: microservice-config
+            - secretRef:
+                name: microservice-secret
+            - secretRef:
+                name: mysql-secret
 ---
 apiVersion: v1
 kind: Service

@@ -13,6 +13,7 @@ spec:
     metadata:
       labels:
         app: underwriter
+        role: backend
     spec:
       containers:
         - name: underwriter
@@ -25,7 +26,8 @@ spec:
               memory: "1.5Gi"
               cpu: 2
           ports:
-            - containerPort: 80
+            - name: underwriter
+              containerPort: 8071
           envFrom:
             - configMapRef:
                 name: microservice-config
@@ -42,17 +44,5 @@ spec:
                 secretKeyRef:
                   name: mysql-secret
                   key: MYSQL_PASSWORD
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: underwriter-service
-spec:
-  type: NodePort
-  selector:
-    app: underwriter
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
-      nodePort: 30103
+            - name: APP_PORT
+              value: "8071"

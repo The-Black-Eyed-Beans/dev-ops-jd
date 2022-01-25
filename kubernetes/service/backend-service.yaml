@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+spec:
+  type: ClusterIP
+  selector:
+    role: backend
+  ports:
+    - name: user
+      protocol: TCP
+      port: 8070
+      targetPort: user
+    - name: underwriter
+      protocol: TCP
+      port: 8071
+      targetPort: underwriter
+    - name: account
+      protocol: TCP
+      port: 8072
+      targetPort: account
+    - name: bank
+      protocol: TCP
+      port: 8083
+      targetPort: bank
+    - name: transaction
+      protocol: TCP
+      port: 8073
+      targetPort: transaction

@@ -27,7 +27,7 @@ spec:
               cpu: 2
           ports:
             - name: bank
-              containerPort: 8083
+              containerPort: 80
           envFrom:
             - configMapRef:
                 name: microservice-config
@@ -44,5 +44,3 @@ spec:
                 secretKeyRef:
                   name: mysql-secret
                   key: MYSQL_PASSWORD
-            - name: APP_PORT
-              value: "8083"

@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gateway-config
+data:
+  APP_PORT: "80"
+  APP_SERVICE_HOST: backend-service.aline-dev-backend
+  PORTAL_LANDING: "http://localhost:3000"
+  PORTAL_DASHBOARD: "http://localhost:4200"
+  PORTAL_ADMIN: "http://localhost:3007"

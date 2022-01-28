@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: account-deployment
+  namespace: aline-dev-backend
   labels:
     app: account-deployment
 spec:
@@ -18,21 +19,14 @@ spec:
       containers:
         - name: account
           image: joshuad23/aline-account-service
-          resources:
-            requests:
-              memory: "1Gi"
-              cpu: 1
-            limits:
-              memory: "1.5Gi"
-              cpu: 2
           ports:
             - name: account
               containerPort: 80
           envFrom:
             - configMapRef:
-                name: microservice-config
+                name: backend-config
             - secretRef:
-                name: microservice-secret
+                name: backend-secret
           env:
             - name: DB_USERNAME
               valueFrom:

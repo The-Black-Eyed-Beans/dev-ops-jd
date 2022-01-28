@@ -1,6 +1,6 @@
 *.env
 *-secret.yaml
-*.logs
+*.log
 requirements.txt
 high-availability.yaml
 calico.yaml

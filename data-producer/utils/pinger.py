@@ -1,6 +1,6 @@
 import socket
 import time
-from logger import Logger
+from .logger import Logger
 
 logger = Logger()
 

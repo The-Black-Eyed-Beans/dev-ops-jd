@@ -1,0 +1,281 @@
+INFO:root:2022-01-27 19:53:06.193138: Starting python script...
+INFO:root:2022-01-27 19:53:06.193138: Retrieving last record in account_sequence...
+DEBUG:root:2022-01-27 19:53:06.193138: Pinging database @ 127.0.0.1
+DEBUG:root:2022-01-27 19:53:06.194139: Ping pong. Success.
+DEBUG:root:2022-01-27 19:53:06.194782: Attempting to connect to database...
+DEBUG:root:2022-01-27 19:53:06.248128: No record found!
+INFO:root:2022-01-27 19:53:06.248128: Attempting to add new record to table...
+DEBUG:root:2022-01-27 19:53:06.248128: Pinging database @ 127.0.0.1
+DEBUG:root:2022-01-27 19:53:06.248651: Ping pong. Success.
+DEBUG:root:2022-01-27 19:53:06.248651: Attempting to connect to database...
+INFO:root:2022-01-27 19:53:06.278331: Execution complete. Records commited: 1
+INFO:root:2022-01-27 19:53:06.278879: Querying database for null merchant...
+DEBUG:root:2022-01-27 19:53:06.278879: Pinging database @ 127.0.0.1
+DEBUG:root:2022-01-27 19:53:06.279415: Ping pong. Success.
+DEBUG:root:2022-01-27 19:53:06.279415: Attempting to connect to database...
+DEBUG:root:2022-01-27 19:53:06.294808: No record found!
+INFO:root:2022-01-27 19:53:06.294827: Attempting to insert NULL merchant...
+DEBUG:root:2022-01-27 19:53:06.294827: Pinging database @ 127.0.0.1
+DEBUG:root:2022-01-27 19:53:06.294827: Ping pong. Success.
+DEBUG:root:2022-01-27 19:53:06.295351: Attempting to connect to database...
+INFO:root:2022-01-27 19:53:06.328223: Execution complete. Records commited: 1
+INFO:root:2022-01-27 19:53:06.328748: Attempting to create 5 dummy banks...
+INFO:root:2022-01-27 19:53:06.328748: Bank #0
+INFO:root:2022-01-27 19:53:06.328748: Creating dummy bank.
+INFO:root:2022-01-27 19:53:06.329273: Dummy bank successfully generated.
+INFO:root:2022-01-27 19:53:06.329273: Sending data to microservice...
+INFO:root:2022-01-27 19:53:06.329273: Attempting to retieve token.
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /login HTTP/1.1" 403 0
+INFO:root:2022-01-27 19:53:06.677394: Attempting to Register admin.
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/users/registration HTTP/1.1" 201 None
+INFO:root:2022-01-27 19:53:07.095486: Admin successfully registered.
+INFO:root:2022-01-27 19:53:07.096016: username: blackEyeBeans password: Abc123456*
+INFO:root:2022-01-27 19:53:07.096016: Attempting to retieve token.
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /login HTTP/1.1" 200 0
+INFO:root:2022-01-27 19:53:07.220181: Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJibGFja0V5ZUJlYW5zIiwiYXV0aG9yaXR5IjoiYWRtaW5pc3RyYXRvciIsImlhdCI6MTY0MzMzMTE4NywiZXhwIjoxNjQ0NTQwNzg3fQ.2B-5w8yNbi3NquPvYEKZXlW3CsIc_uN7DfLgE1uZt6w
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/banks HTTP/1.1" 201 None
+INFO:root:2022-01-27 19:53:07.441934: Microservice successfully added bank to database!
+INFO:root:2022-01-27 19:53:07.441934: Bank #1
+INFO:root:2022-01-27 19:53:07.441934: Creating dummy bank.
+INFO:root:2022-01-27 19:53:07.442460: Dummy bank successfully generated.
+INFO:root:2022-01-27 19:53:07.442460: Sending data to microservice...
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/banks HTTP/1.1" 201 None
+INFO:root:2022-01-27 19:53:07.526154: Microservice successfully added bank to database!
+INFO:root:2022-01-27 19:53:07.526154: Bank #2
+INFO:root:2022-01-27 19:53:07.526696: Creating dummy bank.
+INFO:root:2022-01-27 19:53:07.527228: Dummy bank successfully generated.
+INFO:root:2022-01-27 19:53:07.527228: Sending data to microservice...
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/banks HTTP/1.1" 201 None
+INFO:root:2022-01-27 19:53:07.566299: Microservice successfully added bank to database!
+INFO:root:2022-01-27 19:53:07.566299: Bank #3
+INFO:root:2022-01-27 19:53:07.566841: Creating dummy bank.
+INFO:root:2022-01-27 19:53:07.566841: Dummy bank successfully generated.
+INFO:root:2022-01-27 19:53:07.566841: Sending data to microservice...
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/banks HTTP/1.1" 201 None
+INFO:root:2022-01-27 19:53:07.610603: Microservice successfully added bank to database!
+INFO:root:2022-01-27 19:53:07.610603: Bank #4
+INFO:root:2022-01-27 19:53:07.610603: Creating dummy bank.
+INFO:root:2022-01-27 19:53:07.611132: Dummy bank successfully generated.
+INFO:root:2022-01-27 19:53:07.611132: Sending data to microservice...
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/banks HTTP/1.1" 201 None
+INFO:root:2022-01-27 19:53:07.695448: Microservice successfully added bank to database!
+INFO:root:2022-01-27 19:53:07.696175: Attempting to create 5 dummy branches...
+INFO:root:2022-01-27 19:53:07.696175: Branch #0
+INFO:root:2022-01-27 19:53:07.696175: Creating dummy branch.
+INFO:root:2022-01-27 19:53:07.696700: Dummy branch successfully generated.
+INFO:root:2022-01-27 19:53:07.696700: Sending data to microservice...
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/branches HTTP/1.1" 201 None
+INFO:root:2022-01-27 19:53:07.776027: Microservice successfully added branch to database!
+INFO:root:2022-01-27 19:53:07.776027: Branch #1
+INFO:root:2022-01-27 19:53:07.776027: Creating dummy branch.
+INFO:root:2022-01-27 19:53:07.776557: Dummy branch successfully generated.
+INFO:root:2022-01-27 19:53:07.776557: Sending data to microservice...
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/branches HTTP/1.1" 201 None
+INFO:root:2022-01-27 19:53:07.835321: Microservice successfully added branch to database!
+INFO:root:2022-01-27 19:53:07.835854: Branch #2
+INFO:root:2022-01-27 19:53:07.835854: Creating dummy branch.
+INFO:root:2022-01-27 19:53:07.835854: Dummy branch successfully generated.
+INFO:root:2022-01-27 19:53:07.835854: Sending data to microservice...
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/branches HTTP/1.1" 400 None
+ERROR:root:2022-01-27 19:53:07.966090: Microservice failed to add branch to database! Reattempting...
+INFO:root:2022-01-27 19:53:07.966135: Creating dummy branch.
+INFO:root:2022-01-27 19:53:07.966677: Dummy branch successfully generated.
+INFO:root:2022-01-27 19:53:07.966677: Sending data to microservice...
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/branches HTTP/1.1" 201 None
+INFO:root:2022-01-27 19:53:08.009747: Microservice successfully added branch to database!
+INFO:root:2022-01-27 19:53:08.009747: Branch #3
+INFO:root:2022-01-27 19:53:08.009747: Creating dummy branch.
+INFO:root:2022-01-27 19:53:08.010286: Dummy branch successfully generated.
+INFO:root:2022-01-27 19:53:08.010830: Sending data to microservice...
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/branches HTTP/1.1" 201 None
+INFO:root:2022-01-27 19:53:08.049010: Microservice successfully added branch to database!
+INFO:root:2022-01-27 19:53:08.049010: Branch #4
+INFO:root:2022-01-27 19:53:08.049010: Creating dummy branch.
+INFO:root:2022-01-27 19:53:08.049577: Dummy branch successfully generated.
+INFO:root:2022-01-27 19:53:08.049577: Sending data to microservice...
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/branches HTTP/1.1" 201 None
+INFO:root:2022-01-27 19:53:08.136039: Microservice successfully added branch to database!
+INFO:root:2022-01-27 19:53:08.136039: Attempting to create 5 dummy applicants...
+INFO:root:2022-01-27 19:53:08.136039: Applicant #0
+INFO:root:2022-01-27 19:53:08.136039: Creating dummy applicant.
+INFO:root:2022-01-27 19:53:08.137635: Dummy applicant successfully generated.
+INFO:root:2022-01-27 19:53:08.138156: Sending data to microservice...
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/applicants HTTP/1.1" 400 None
+ERROR:root:2022-01-27 19:53:08.474205: Microservice failed to add applicant to database! Reattempting...
+INFO:root:2022-01-27 19:53:08.474205: Creating dummy applicant.
+INFO:root:2022-01-27 19:53:08.475280: Dummy applicant successfully generated.
+INFO:root:2022-01-27 19:53:08.475280: Sending data to microservice...
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/applicants HTTP/1.1" 400 None
+ERROR:root:2022-01-27 19:53:08.555601: Microservice failed to add applicant to database! Reattempting...
+INFO:root:2022-01-27 19:53:08.556139: Creating dummy applicant.
+INFO:root:2022-01-27 19:53:08.557222: Dummy applicant successfully generated.
+INFO:root:2022-01-27 19:53:08.557222: Sending data to microservice...
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/applicants HTTP/1.1" 201 None
+INFO:root:2022-01-27 19:53:08.888483: Microservice successfully added applicant to database!
+INFO:root:2022-01-27 19:53:08.889009: Applicant #1
+INFO:root:2022-01-27 19:53:08.889009: Creating dummy applicant.
+INFO:root:2022-01-27 19:53:08.889548: Dummy applicant successfully generated.
+INFO:root:2022-01-27 19:53:08.889548: Sending data to microservice...
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/applicants HTTP/1.1" 201 None
+INFO:root:2022-01-27 19:53:08.957095: Microservice successfully added applicant to database!
+INFO:root:2022-01-27 19:53:08.957095: Applicant #2
+INFO:root:2022-01-27 19:53:08.957095: Creating dummy applicant.
+INFO:root:2022-01-27 19:53:08.958165: Dummy applicant successfully generated.
+INFO:root:2022-01-27 19:53:08.958165: Sending data to microservice...
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/applicants HTTP/1.1" 201 None
+INFO:root:2022-01-27 19:53:09.066104: Microservice successfully added applicant to database!
+INFO:root:2022-01-27 19:53:09.066104: Applicant #3
+INFO:root:2022-01-27 19:53:09.066104: Creating dummy applicant.
+INFO:root:2022-01-27 19:53:09.067174: Dummy applicant successfully generated.
+INFO:root:2022-01-27 19:53:09.067174: Sending data to microservice...
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/applicants HTTP/1.1" 400 None
+ERROR:root:2022-01-27 19:53:09.130536: Microservice failed to add applicant to database! Reattempting...
+INFO:root:2022-01-27 19:53:09.130536: Creating dummy applicant.
+INFO:root:2022-01-27 19:53:09.131626: Dummy applicant successfully generated.
+INFO:root:2022-01-27 19:53:09.131626: Sending data to microservice...
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/applicants HTTP/1.1" 201 None
+INFO:root:2022-01-27 19:53:09.184256: Microservice successfully added applicant to database!
+INFO:root:2022-01-27 19:53:09.184868: Applicant #4
+INFO:root:2022-01-27 19:53:09.184868: Creating dummy applicant.
+INFO:root:2022-01-27 19:53:09.185404: Dummy applicant successfully generated.
+INFO:root:2022-01-27 19:53:09.185938: Sending data to microservice...
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/applicants HTTP/1.1" 201 None
+INFO:root:2022-01-27 19:53:09.286057: Microservice successfully added applicant to database!
+INFO:root:2022-01-27 19:53:09.286057: Attempting to create 5 dummy applications...
+INFO:root:2022-01-27 19:53:09.286057: Application #1
+INFO:root:2022-01-27 19:53:09.286057: Creating SAVINGS application.
+INFO:root:2022-01-27 19:53:09.286057: Sending data to microservice...
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/applications HTTP/1.1" 201 None
+INFO:root:2022-01-27 19:53:09.535640: Microservice successfully added application to database!
+INFO:root:2022-01-27 19:53:09.535640: Application #2
+INFO:root:2022-01-27 19:53:09.535640: Creating CHECKING application.
+INFO:root:2022-01-27 19:53:09.535640: Sending data to microservice...
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/applications HTTP/1.1" 201 None
+INFO:root:2022-01-27 19:53:09.597279: Microservice successfully added application to database!
+INFO:root:2022-01-27 19:53:09.597279: Application #3
+INFO:root:2022-01-27 19:53:09.597805: Creating SAVINGS application.
+INFO:root:2022-01-27 19:53:09.597805: Sending data to microservice...
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/applications HTTP/1.1" 201 None
+INFO:root:2022-01-27 19:53:09.705668: Microservice successfully added application to database!
+INFO:root:2022-01-27 19:53:09.706215: Application #4
+INFO:root:2022-01-27 19:53:09.706215: Creating SAVINGS application.
+INFO:root:2022-01-27 19:53:09.706215: Sending data to microservice...
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/applications HTTP/1.1" 201 None
+INFO:root:2022-01-27 19:53:09.769841: Microservice successfully added application to database!
+INFO:root:2022-01-27 19:53:09.769841: Application #5
+INFO:root:2022-01-27 19:53:09.769841: Creating CHECKING application.
+INFO:root:2022-01-27 19:53:09.769841: Sending data to microservice...
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/applications HTTP/1.1" 201 None
+INFO:root:2022-01-27 19:53:09.819622: Microservice successfully added application to database!
+INFO:root:2022-01-27 19:53:09.819622: Starting application spin cycle (removing denied accounts).
+INFO:root:2022-01-27 19:53:09.819622: Checking application status...
+INFO:root:2022-01-27 19:53:09.819622: Application approved. Adding to list...
+INFO:root:2022-01-27 19:53:09.819622: Application successfully added to list...
+INFO:root:2022-01-27 19:53:09.819622: Checking application status...
+INFO:root:2022-01-27 19:53:09.820156: Application approved. Adding to list...
+INFO:root:2022-01-27 19:53:09.820156: Application successfully added to list...
+INFO:root:2022-01-27 19:53:09.820156: Checking application status...
+INFO:root:2022-01-27 19:53:09.820156: Application approved. Adding to list...
+INFO:root:2022-01-27 19:53:09.820156: Application successfully added to list...
+INFO:root:2022-01-27 19:53:09.820156: Checking application status...
+INFO:root:2022-01-27 19:53:09.820156: Application approved. Adding to list...
+INFO:root:2022-01-27 19:53:09.820156: Application successfully added to list...
+INFO:root:2022-01-27 19:53:09.820156: Checking application status...
+INFO:root:2022-01-27 19:53:09.820156: Application approved. Adding to list...
+INFO:root:2022-01-27 19:53:09.820156: Application successfully added to list...
+INFO:root:2022-01-27 19:53:09.820156: Attempting to create 5 dummy users...
+INFO:root:2022-01-27 19:53:09.820688: User #1
+INFO:root:2022-01-27 19:53:09.820688: Creating dummy user.
+INFO:root:2022-01-27 19:53:09.820688: Dummy user successfully generated.
+INFO:root:2022-01-27 19:53:09.820688: Sending data to microservice...
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/users/registration HTTP/1.1" 201 None
+INFO:root:2022-01-27 19:53:10.105877: Microservice successfully added user to database!
+INFO:root:2022-01-27 19:53:10.105877: User #2
+INFO:root:2022-01-27 19:53:10.105877: Creating dummy user.
+INFO:root:2022-01-27 19:53:10.105877: Dummy user successfully generated.
+INFO:root:2022-01-27 19:53:10.105877: Sending data to microservice...
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/users/registration HTTP/1.1" 201 None
+INFO:root:2022-01-27 19:53:10.246156: Microservice successfully added user to database!
+INFO:root:2022-01-27 19:53:10.246156: User #3
+INFO:root:2022-01-27 19:53:10.246156: Creating dummy user.
+INFO:root:2022-01-27 19:53:10.246156: Dummy user successfully generated.
+INFO:root:2022-01-27 19:53:10.246156: Sending data to microservice...
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/users/registration HTTP/1.1" 201 None
+INFO:root:2022-01-27 19:53:10.387829: Microservice successfully added user to database!
+INFO:root:2022-01-27 19:53:10.388356: User #4
+INFO:root:2022-01-27 19:53:10.388356: Creating dummy user.
+INFO:root:2022-01-27 19:53:10.388356: Dummy user successfully generated.
+INFO:root:2022-01-27 19:53:10.388356: Sending data to microservice...
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/users/registration HTTP/1.1" 404 22
+ERROR:root:2022-01-27 19:53:10.455633: Microservice failed to add user to database! Reattempting...
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/users/registration HTTP/1.1" 404 22
+ERROR:root:2022-01-27 19:53:10.479909: Microservice failed to add user to database! Reattempting...
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/users/registration HTTP/1.1" 404 22
+ERROR:root:2022-01-27 19:53:10.501530: Microservice failed to add user to database! Reattempting...
+ERROR:root:2022-01-27 19:53:10.502061: Microservice failed. Attempts exhausted!
+INFO:root:2022-01-27 19:53:10.502061: User #5
+INFO:root:2022-01-27 19:53:10.502061: Creating dummy user.
+INFO:root:2022-01-27 19:53:10.502061: Dummy user successfully generated.
+INFO:root:2022-01-27 19:53:10.502061: Sending data to microservice...
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/users/registration HTTP/1.1" 201 None
+INFO:root:2022-01-27 19:53:10.685503: Microservice successfully added user to database!
+INFO:root:2022-01-27 19:53:10.686027: Attempting to create 1 dummy merchants...
+INFO:root:2022-01-27 19:53:10.686027: Merchant #1
+INFO:root:2022-01-27 19:53:10.686027: Creating dummy merchant.
+INFO:root:2022-01-27 19:53:10.686027: Dummy merchant successfully generated.
+INFO:root:2022-01-27 19:53:10.686535: Attempting to create 4 dummy transactions...
+INFO:root:2022-01-27 19:53:10.686559: Transaction #1
+INFO:root:2022-01-27 19:53:10.686559: Sending data to microservice...
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/transactions HTTP/1.1" 200 None
+INFO:root:2022-01-27 19:53:11.327849: Microservice successfully added transaction to database!
+INFO:root:2022-01-27 19:53:11.327849: Transaction #2
+INFO:root:2022-01-27 19:53:11.327849: Sending data to microservice...
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/transactions HTTP/1.1" 200 None
+INFO:root:2022-01-27 19:53:11.416032: Microservice successfully added transaction to database!
+INFO:root:2022-01-27 19:53:11.416032: Transaction #3
+INFO:root:2022-01-27 19:53:11.416032: Sending data to microservice...
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/transactions HTTP/1.1" 200 None
+INFO:root:2022-01-27 19:53:11.526097: Microservice successfully added transaction to database!
+INFO:root:2022-01-27 19:53:11.526124: Transaction #4
+INFO:root:2022-01-27 19:53:11.526124: Sending data to microservice...
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 127.0.0.1:1380
+DEBUG:urllib3.connectionpool:http://127.0.0.1:1380 "POST /api/transactions HTTP/1.1" 200 None
+INFO:root:2022-01-27 19:53:11.605205: Microservice successfully added transaction to database!
+INFO:root:2022-01-27 19:53:11.605205: Script completed successfully and is shuting down!

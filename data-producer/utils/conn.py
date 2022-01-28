@@ -1,7 +1,7 @@
 from os import environ
 import mysql.connector
-from logger import Logger
-from pinger import ping, pinger
+from .logger import Logger
+from .pinger import ping, pinger
 
 logger = Logger()
 

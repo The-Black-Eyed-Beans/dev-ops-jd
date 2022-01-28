@@ -1,9 +1,9 @@
 from datetime import datetime
-from logger import Logger
-import util
+from utils.logger import Logger
+from utils import util
 
 def main():
-    file_name = "py_inj_%s.log" % datetime.today().strftime('%Y-%m-%d-%H%M%S')
+    file_name = "./logs/py_inj_%s.log" % datetime.today().strftime('%Y-%m-%d-%H%M%S')
     logger = Logger(file_name)
     logger.create_file_and_start()
     logger.info("Starting python script...")

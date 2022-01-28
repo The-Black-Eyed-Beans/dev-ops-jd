@@ -1,6 +1,6 @@
 from os import environ
 from requests import post, exceptions
-from logger import Logger
+from .logger import Logger
 
 class Request(Logger):
 

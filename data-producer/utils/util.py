@@ -4,9 +4,9 @@ from requests import post
 from random import randint
 from faker import Faker
 from faker.providers import internet,date_time,misc
-from conn import get_conn
-from logger import Logger
-from request import Request
+from .conn import get_conn
+from .logger import Logger
+from .request import Request
 
 req = Request()
 logger = Logger()
@@ -112,7 +112,7 @@ def create_transactions(users,merchants):
         merchant = merchants[rand_int]
         logger.info("Transaction #%d",i)
         #transactions.append(add_transaction(user,merchant))
-        url = "http://%s/transactions" % environ.get('URL_TRANSACTIONS')
+        url = "http://%s/api/transactions" % environ.get('BASE_URL')
         Faker.seed(0)
         payload = {
             "type":"DEPOSIT",

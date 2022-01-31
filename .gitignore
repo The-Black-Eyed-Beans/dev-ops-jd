@@ -4,3 +4,5 @@
 requirements.txt
 high-availability.yaml
 calico.yaml
+__pycache__
+/docker-compose-ecs/microservice.env

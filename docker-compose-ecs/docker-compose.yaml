@@ -1,0 +1,42 @@
+version: "3"
+services:
+  user-microservice:
+    image: 086620157175.dkr.ecr.us-east-1.amazonaws.com/user-microservice
+    environment:
+      - APP_PORT=8070
+    ports:
+      - "8070:8070"
+    env_file:
+      - microservice.env
+  bank-microservice:
+    image: 086620157175.dkr.ecr.us-east-1.amazonaws.com/bank-microservice
+    environment:
+      - APP_PORT=8083
+    ports:
+      - "8083:8083"
+    env_file:
+      - microservice.env
+  underwriter-microservice:
+    image: 086620157175.dkr.ecr.us-east-1.amazonaws.com/underwriter-microservice
+    environment:
+      - APP_PORT=8071
+    ports:
+      - "8071:8071"
+    env_file:
+      - microservice.env
+  transactions-microservice:
+    image: 086620157175.dkr.ecr.us-east-1.amazonaws.com/transaction-microservice
+    environment:
+      - APP_PORT=8073
+    ports:
+      - "8073:8073"
+    env_file:
+      - microservice.env
+  account-microservice:
+    image: 086620157175.dkr.ecr.us-east-1.amazonaws.com/account-microservice
+    environment:
+      - APP_PORT=8072
+    ports:
+      - "8072:8072"
+    env_file:
+      - microservice.env

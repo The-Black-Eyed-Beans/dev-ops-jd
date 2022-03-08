@@ -1,42 +1,212 @@
-version: "3"
+version: "3.9"
+
+x-aws-vpc: ${VPC}
+x-aws-loadbalancer: ${LOAD_BALANCER}
+
 services:
+  database:
+    image: ${IMAGE_DATABASE}
+    networks:
+      - default
+    secrets:
+      - MYSQL_USER
+      - MYSQL_PASSWORD
+      - MYSQL_ROOT_PASSWORD
+      - MYSQL_DATABASE
+    environment:
+      - MYSQL_USER_FILE=/run/secrets/MYSQL_USER
+      - MYSQL_PASSWORD_FILE=/run/secrets/MYSQL_PASSWORD
+      - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/MYSQL_ROOT_PASSWORD
+      - MYSQL_DATABASE_FILE=/run/secrets/MYSQL_DATABASE
   user-microservice:
-    image: 086620157175.dkr.ecr.us-east-1.amazonaws.com/user-microservice
+    image: ${IMAGE_USER}
+    networks:
+      - default
+    secrets:
+      - MYSQL_USER
+      - MYSQL_PASSWORD
+      - MYSQL_DATABASE
+      - MYSQL_HOST
+      - MYSQL_PORT
+      - ENCRYPT_SECRET_KEY
+      - JWT_SECRET_KEY
     environment:
-      - APP_PORT=8070
-    ports:
-      - "8070:8070"
-    env_file:
-      - microservice.env
+      - APP_PORT=${APP_PORT}
+      - WAIT_TIME=${WAIT_TIME}
+    depends_on:
+      - database
   bank-microservice:
-    image: 086620157175.dkr.ecr.us-east-1.amazonaws.com/bank-microservice
+    image: ${IMAGE_BANK}
+    networks:
+      - default
+    secrets:
+      - MYSQL_USER
+      - MYSQL_PASSWORD
+      - MYSQL_DATABASE
+      - MYSQL_HOST
+      - MYSQL_PORT
+      - ENCRYPT_SECRET_KEY
+      - JWT_SECRET_KEY
     environment:
-      - APP_PORT=8083
-    ports:
-      - "8083:8083"
-    env_file:
-      - microservice.env
+      - APP_PORT=${APP_PORT}
+      - WAIT_TIME=${WAIT_TIME}
+    depends_on:
+      - database
   underwriter-microservice:
-    image: 086620157175.dkr.ecr.us-east-1.amazonaws.com/underwriter-microservice
+    image: ${IMAGE_UNDERWRITER}
+    networks:
+      - default
+    secrets:
+      - MYSQL_USER
+      - MYSQL_PASSWORD
+      - MYSQL_DATABASE
+      - MYSQL_HOST
+      - MYSQL_PORT
+      - ENCRYPT_SECRET_KEY
+      - JWT_SECRET_KEY
     environment:
-      - APP_PORT=8071
-    ports:
-      - "8071:8071"
-    env_file:
-      - microservice.env
-  transactions-microservice:
-    image: 086620157175.dkr.ecr.us-east-1.amazonaws.com/transaction-microservice
+      - APP_PORT=${APP_PORT}
+      - WAIT_TIME=${WAIT_TIME}
+    depends_on:
+      - database
+  transaction-microservice:
+    image: ${IMAGE_TRANSACTION}
+    networks:
+      - default
+    secrets:
+      - MYSQL_USER
+      - MYSQL_PASSWORD
+      - MYSQL_DATABASE
+      - MYSQL_HOST
+      - MYSQL_PORT
+      - ENCRYPT_SECRET_KEY
+      - JWT_SECRET_KEY
     environment:
-      - APP_PORT=8073
-    ports:
-      - "8073:8073"
-    env_file:
-      - microservice.env
+      - APP_PORT=${APP_PORT}
+      - WAIT_TIME=${WAIT_TIME}
+    depends_on:
+      - database
   account-microservice:
-    image: 086620157175.dkr.ecr.us-east-1.amazonaws.com/account-microservice
+    image: ${IMAGE_ACCOUNT}
+    networks:
+      - default
+    secrets:
+      - MYSQL_USER
+      - MYSQL_PASSWORD
+      - MYSQL_DATABASE
+      - MYSQL_HOST
+      - MYSQL_PORT
+      - ENCRYPT_SECRET_KEY
+      - JWT_SECRET_KEY
     environment:
-      - APP_PORT=8072
+      - APP_PORT=${APP_PORT}
+      - WAIT_TIME=${WAIT_TIME}
+    depends_on:
+      - database
+  proxy-server:
+    image: ${IMAGE_PROXY_SERVER}
+    networks:
+      - public
+      - default
+    environment:
+      - USER_SERVICE=user-microservice
+      - UNDERWRITER_SERVICE=underwriter-microservice
+      - ACCOUNT_SERVICE=account-microservice
+      - TRANSACTION_SERVICE=transaction-microservice
+      - BANK_SERVICE=bank-microservice
+    depends_on:
+      - user-microservice
+      - underwriter-microservice
+      - account-microservice
+      - transaction-microservice
+      - bank-microservice
+  gateway:
+    image: ${IMAGE_GATEWAY}
     ports:
-      - "8072:8072"
-    env_file:
-      - microservice.env
+      - target: 80
+        x-aws-protocol: http
+    environment:
+      - APP_SERVICE_HOST=proxy-server
+      - APP_PORT=80
+    networks:
+      - public
+      - loadbalancer
+    depends_on:
+      - proxy-server
+secrets:
+  MYSQL_USER:
+    file: ./secrets/MYSQL_USER
+  MYSQL_PASSWORD:
+    file: ./secrets/MYSQL_PASSWORD
+  MYSQL_ROOT_PASSWORD:
+    file: ./secrets/MYSQL_ROOT_PASSWORD
+  MYSQL_DATABASE:
+    file: ./secrets/MYSQL_DATABASE
+  MYSQL_PORT:
+    file: ./secrets/MYSQL_PORT
+  MYSQL_HOST:
+    file: ./secrets/MYSQL_HOST
+  ENCRYPT_SECRET_KEY:
+    file: ./secrets/ENCRYPT_SECRET_KEY
+  JWT_SECRET_KEY:
+    file: ./secrets/JWT_SECRET_KEY
+volumes:
+  mysql:
+networks:
+  default:
+    name: private
+  public:
+    driver: bridge
+  loadbalancer:
+    external: true
+    name: ${SG_LOADBALANCER}
+
+x-aws-cloudformation:
+  Resources:
+    UsermicroserviceService:
+      Properties:
+        NetworkConfiguration:
+          AwsvpcConfiguration:
+            Subnets:
+              - ${SUBNET}
+    UnderwritermicroserviceService:
+      Properties:
+        NetworkConfiguration:
+          AwsvpcConfiguration:
+            Subnets:
+              - ${SUBNET}
+    AccountmicroserviceService:
+      Properties:
+        NetworkConfiguration:
+          AwsvpcConfiguration:
+            Subnets:
+              - ${SUBNET}
+    TransactionmicroserviceService:
+      Properties:
+        NetworkConfiguration:
+          AwsvpcConfiguration:
+            Subnets:
+              - ${SUBNET}
+    BankmicroserviceService:
+      Properties:
+        NetworkConfiguration:
+          AwsvpcConfiguration:
+            Subnets:
+              - ${SUBNET}
+    ProxyserverService:
+      Properties:
+        NetworkConfiguration:
+          AwsvpcConfiguration:
+            Subnets:
+              - ${SUBNET}
+    GatewayService:
+      Properties:
+        NetworkConfiguration:
+          AwsvpcConfiguration:
+            Subnets:
+              - ${SUBNET}
+    Gateway80TargetGroup:
+      Properties:
+        HealthCheckPath: /health
+        Matcher:
+          HttpCode: 200-499

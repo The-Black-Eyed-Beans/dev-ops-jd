@@ -1,19 +1,19 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: mysql-network-policy
-  namespace: aline-dev-mysql
+  name: database-policy
+  namespace: ${DATABASE_NS}
 spec:
   podSelector:
     matchLabels:
-      app: mysql
+      app: database
   policyTypes:
     - Ingress
   ingress:
     - from:
         - namespaceSelector:
             matchLabels:
-              namespace: aline-dev-backend
+              namespace: ${BACKEND_NS}
           podSelector:
             matchLabels:
               role: backend

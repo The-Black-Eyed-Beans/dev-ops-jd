@@ -2,11 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: transactions-deployment
-  namespace: aline-dev-backend
+  namespace: ${BACKEND_NS}
   labels:
     app: transactions-deployment
 spec:
-  replicas: 1
+  replicas: ${BACKEND_REPS}
   selector:
     matchLabels:
       app: transactions
@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: transactions
-          image: joshuad23/aline-transaction-micro
+          image: ${AWS_ACCOUNT_ID}.dkr.ecr.${ECR_REGION}.amazonaws.com/transaction-microservice-jd
           ports:
             - name: transaction
               containerPort: 80
@@ -31,10 +31,10 @@ spec:
             - name: DB_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: mysql-secret
+                  name: database-secret
                   key: MYSQL_USER
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: mysql-secret
+                  name: database-secret
                   key: MYSQL_PASSWORD

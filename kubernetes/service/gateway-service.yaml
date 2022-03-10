@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: gateway-service
-  namespace: aline-dev-gateway
+  namespace: ${GATEWAY_NS}
 spec:
   type: NodePort
   selector:

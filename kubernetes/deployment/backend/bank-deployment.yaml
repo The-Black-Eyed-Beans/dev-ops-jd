@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: bank
-          image: ${AWS_ACCOUNT_ID}.dkr.ecr.${ECR_REGION}.amazonaws.com/bank-microservice-jd
+          image: ${BANK_IMAGE}
           ports:
             - name: bank
               containerPort: 80
@@ -38,3 +38,5 @@ spec:
                 secretKeyRef:
                   name: database-secret
                   key: MYSQL_PASSWORD
+      imagePullSecrets:
+      - name: regcred

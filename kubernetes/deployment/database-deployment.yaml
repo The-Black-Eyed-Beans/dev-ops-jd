@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: mysqldb
-          image: ${AWS_ACCOUNT_ID}.dkr.ecr.${ECR_REGION}.amazonaws.com/database-jd
+          image: ${DATABASE_IMAGE}
           ports:
             - containerPort: 3306
           envFrom:
@@ -28,6 +28,8 @@ spec:
           volumeMounts:
             - name: database-persistent-storage
               mountPath: /var/lib/mysql
+      imagePullSecrets:
+      - name: regcred
       volumes:
         - name: database-persistent-storage
           persistentVolumeClaim:

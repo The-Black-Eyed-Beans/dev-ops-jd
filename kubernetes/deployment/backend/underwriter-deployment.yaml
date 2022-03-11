@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: underwriter
-          image: ${AWS_ACCOUNT_ID}.dkr.ecr.${ECR_REGION}.amazonaws.com/underwriter-microservice-jd
+          image: ${UNDERWRITER_IMAGE}
           ports:
             - name: underwriter
               containerPort: 80
@@ -38,3 +38,5 @@ spec:
                 secretKeyRef:
                   name: database-secret
                   key: MYSQL_PASSWORD
+      imagePullSecrets:
+      - name: regcred

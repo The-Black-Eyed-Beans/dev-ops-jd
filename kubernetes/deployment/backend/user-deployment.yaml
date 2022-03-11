@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: user
-          image: ${AWS_ACCOUNT_ID}.dkr.ecr.${ECR_REGION}.amazonaws.com/user-microservice-jd
+          image: ${USER_IMAGE}
           ports:
             - name: user
               containerPort: 80
@@ -38,3 +38,5 @@ spec:
                 secretKeyRef:
                   name: database-secret
                   key: MYSQL_PASSWORD
+      imagePullSecrets:
+        - name: regcred

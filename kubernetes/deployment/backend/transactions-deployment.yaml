@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: transactions
-          image: ${AWS_ACCOUNT_ID}.dkr.ecr.${ECR_REGION}.amazonaws.com/transaction-microservice-jd
+          image: ${TRANSACTION_IMAGE}
           ports:
             - name: transaction
               containerPort: 80
@@ -38,3 +38,5 @@ spec:
                 secretKeyRef:
                   name: database-secret
                   key: MYSQL_PASSWORD
+      imagePullSecrets:
+      - name: regcred

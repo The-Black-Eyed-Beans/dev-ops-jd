@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: account-deployment
+  namespace: ${BACKEND_NS}
+  labels:
+    app: account-deployment
+spec:
+  replicas: ${BACKEND_REPS}
+  selector:
+    matchLabels:
+      app: account
+  template:
+    metadata:
+      labels:
+        app: account
+        role: backend
+    spec:
+      containers:
+        - name: account
+          image: ${ACCOUNT_IMAGE}
+          ports:
+            - name: account
+              containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: backend-config
+            - secretRef:
+                name: backend-secret
+      nodeSelector:
+        nodegroup-network: private

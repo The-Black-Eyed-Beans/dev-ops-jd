@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bank-deployment
+  namespace: ${BACKEND_NS}
+  labels:
+    app: bank-deployment
+spec:
+  replicas: ${BACKEND_REPS}
+  selector:
+    matchLabels:
+      app: bank
+  template:
+    metadata:
+      labels:
+        app: bank
+        role: backend
+    spec:
+      containers:
+        - name: bank
+          image: ${BANK_IMAGE}
+          ports:
+            - name: bank
+              containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: backend-config
+            - secretRef:
+                name: backend-secret
+      nodeSelector:
+        nodegroup-network: private

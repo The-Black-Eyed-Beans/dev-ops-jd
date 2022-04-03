@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: transactions-deployment
+  namespace: ${BACKEND_NS}
+  labels:
+    app: transactions-deployment
+spec:
+  replicas: ${BACKEND_REPS}
+  selector:
+    matchLabels:
+      app: transactions
+  template:
+    metadata:
+      labels:
+        app: transactions
+        role: backend
+    spec:
+      containers:
+        - name: transactions
+          image: ${TRANSACTION_IMAGE}
+          ports:
+            - name: transaction
+              containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: backend-config
+            - secretRef:
+                name: backend-secret
+      nodeSelector:
+        nodegroup-network: private

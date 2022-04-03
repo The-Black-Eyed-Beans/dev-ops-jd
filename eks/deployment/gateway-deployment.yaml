@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gateway-deployment
+  namespace: ${GATEWAY_NS}
+  labels:
+    app: gateway-deployment
+spec:
+  replicas: ${GATEWAY_REPS}
+  selector:
+    matchLabels:
+      app: gateway
+  template:
+    metadata:
+      labels:
+        app: gateway
+    spec:
+      containers:
+        - name: gateway
+          image: ${GATEWAY_IMAGE}
+          ports:
+            - name: gateway
+              containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: gateway-config
+      nodeSelector:
+        nodegroup-network: private

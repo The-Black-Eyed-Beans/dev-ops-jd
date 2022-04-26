@@ -2,9 +2,10 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: backend-config
-  namespace: aline-dev-backend
+  namespace: ${BACKEND_NS}
 data:
   APP_PORT: "80"
-  DB_HOST: mysql-service.aline-dev-mysql
+  DB_HOST: database-service.${DATABASE_NS}
   DB_PORT: "3306"
   DB_NAME: "alinedb"
+  WAIT_TIME: "10000"

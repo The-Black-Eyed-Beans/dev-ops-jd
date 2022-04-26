@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mysql-pvc
-  namespace: aline-dev-mysql
+  name: database-pvc
+  namespace: ${DATABASE_NS}
   labels:
-    app: mysql-pvc
+    app: database-pvc
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 5Gi

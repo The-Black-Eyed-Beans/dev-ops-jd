@@ -2,10 +2,10 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: gateway-config
-  namespace: aline-dev-gateway
+  namespace: ${GATEWAY_NS}
 data:
   APP_PORT: "80"
-  APP_SERVICE_HOST: backend-service.aline-dev-backend
+  APP_SERVICE_HOST: backend-service.${BACKEND_NS}
   PORTAL_LANDING: "http://localhost:3000"
   PORTAL_DASHBOARD: "http://localhost:4200"
-  PORTAL_ADMIN: gateway-service
+  PORTAL_ADMIN: "http://localhost:4800"

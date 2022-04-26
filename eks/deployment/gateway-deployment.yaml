@@ -19,9 +19,10 @@ spec:
         - name: gateway
           image: ${GATEWAY_IMAGE}
           ports:
-            - containerPort: 80
+            - name: gateway
+              containerPort: 80
           envFrom:
             - configMapRef:
                 name: gateway-config
-      imagePullSecrets:
-      - name: regcred
+      nodeSelector:
+        nodegroup-network: private
